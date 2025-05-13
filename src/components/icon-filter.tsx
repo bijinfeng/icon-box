@@ -9,7 +9,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
-import { ModeToggle } from '@/components/theme-switch';
+import { ModeToggle } from '@/components/theme/theme-switch';
 
 const zoomLeves = [100, 125, 150, 175, 200]
 const iconSizes = [8, 10, 12, 16, 18, 20, 24, 32, 40, 48, 64, 72, 96, 128, 256]
