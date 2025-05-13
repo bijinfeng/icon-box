@@ -9,6 +9,10 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
+import { ModeToggle } from '@/components/theme-switch';
+
+const zoomLeves = [100, 125, 150, 175, 200]
+const iconSizes = [8, 10, 12, 16, 18, 20, 24, 32, 40, 48, 64, 72, 96, 128, 256]
 
 export const IconFilter = () => {
   return (
@@ -16,7 +20,7 @@ export const IconFilter = () => {
       <Select>
         <SelectTrigger className="w-32" size="sm">
           <ArrowDownWideNarrow />
-          <SelectValue placeholder="Select a fruit" />
+          <SelectValue />
         </SelectTrigger>
         <SelectContent>
           <SelectGroup>
@@ -26,6 +30,32 @@ export const IconFilter = () => {
           </SelectGroup>
         </SelectContent>
       </Select>
+
+      <Select>
+        <SelectTrigger className="w-24" size="sm">
+          <SelectValue />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectGroup>
+            <SelectLabel>Zoom Level</SelectLabel>
+            {zoomLeves.map(level => (
+              <SelectItem key={level} value={level.toString()}>
+                {level}%
+              </SelectItem>
+            ))}
+          </SelectGroup>
+          <SelectGroup>
+            <SelectLabel>View Icons As</SelectLabel>
+            {iconSizes.map(size => (
+              <SelectItem key={size} value={size.toString()}>
+                {size}px
+              </SelectItem>
+            ))}
+          </SelectGroup>
+        </SelectContent>
+      </Select>
+
+      <ModeToggle />
     </div>
   )
 }
