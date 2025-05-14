@@ -1,4 +1,7 @@
-import { ArrowDownWideNarrow } from 'lucide-react';
+"use client"
+
+import { ArrowDownWideNarrow, Cog } from 'lucide-react';
+import { useRouter } from 'next/navigation'
 
 import {
   Select,
@@ -9,12 +12,16 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
+import { Button } from "@/components/ui/button"
 import { ModeToggle } from '@/components/theme/theme-switch';
+import { UserNav } from '@/components/layout/user-nav'
 
 const zoomLeves = [100, 125, 150, 175, 200]
 const iconSizes = [8, 10, 12, 16, 18, 20, 24, 32, 40, 48, 64, 72, 96, 128, 256]
 
 export const IconFilter = () => {
+  const router = useRouter()
+  
   return (
     <div className="flex items-center gap-2">
       <Select>
@@ -56,6 +63,12 @@ export const IconFilter = () => {
       </Select>
 
       <ModeToggle />
+
+      <Button variant="outline" size='icon' className='scale-95' onClick={() => router.push("/dashboard/settings")}>
+        <Cog className="h-[1.2rem] w-[1.2rem]" />
+      </Button>
+
+      <UserNav />
     </div>
   )
 }
