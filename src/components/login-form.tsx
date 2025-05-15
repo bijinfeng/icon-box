@@ -1,5 +1,6 @@
 import { SiGithub, SiGoogle, SiWechat } from '@icons-pack/react-simple-icons';
 import Link from "next/link";
+import Image from "next/image";
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
@@ -75,7 +76,7 @@ export function LoginForm({
             </div>
           </form>
           <div className="bg-muted relative hidden md:block">
-            <img
+            <Image
               src="/placeholder.svg"
               alt="Image"
               className="absolute inset-0 h-full w-full object-cover dark:brightness-[0.2] dark:grayscale"
