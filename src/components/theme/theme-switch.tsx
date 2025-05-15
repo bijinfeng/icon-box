@@ -14,7 +14,10 @@ import {
   DropdownMenuTrigger,
 } from "@iconbox/ui/components/dropdown-menu"
 
-interface ModeToggleProps extends React.ComponentProps<typeof Button> {}
+interface ModeToggleProps extends React.ComponentProps<typeof Button> {
+  // 简洁模式（没有 dropdown 选择）
+  simple?: boolean
+}
 
 export function ModeToggle(props: ModeToggleProps) {
   const { className, ...rest } = props
