@@ -64,8 +64,8 @@ export const IconFilter = () => {
 
       <ModeToggle />
 
-      <Button variant="outline" size='icon' className='scale-95' onClick={() => router.push("/dashboard/settings")}>
-        <Cog className="h-[1.2rem] w-[1.2rem]" />
+      <Button variant="outline" size='icon' className='size-8' onClick={() => router.push("/dashboard/settings")}>
+        <Cog />
       </Button>
 
       <UserNav />
