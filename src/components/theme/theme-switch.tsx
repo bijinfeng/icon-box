@@ -5,14 +5,14 @@ import { Moon, Sun, Check } from "lucide-react"
 import { useTheme } from "next-themes"
 import { upperFirst } from 'lodash-es'
 
-import { cn } from '@/lib/utils'
-import { Button } from "@/components/ui/button"
+import { cn } from '@iconbox/ui/lib/utils'
+import { Button } from "@iconbox/ui/components/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
+} from "@iconbox/ui/components/dropdown-menu"
 
 export function ModeToggle() {
   const { themes, theme, setTheme } = useTheme()

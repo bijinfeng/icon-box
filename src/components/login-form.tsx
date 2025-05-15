@@ -2,11 +2,11 @@ import { SiGithub, SiGoogle, SiWechat } from '@icons-pack/react-simple-icons';
 import Link from "next/link";
 import Image from "next/image";
 
-import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
+import { cn } from "@iconbox/ui/lib/utils"
+import { Button } from "@iconbox/ui/components/button"
+import { Card, CardContent } from "@iconbox/ui/components/card"
+import { Input } from "@iconbox/ui/components/input"
+import { Label } from "@iconbox/ui/components/label"
 
 export function LoginForm({
   className,

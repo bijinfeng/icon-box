@@ -11,8 +11,8 @@ import {
   SelectLabel,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select"
-import { Button } from "@/components/ui/button"
+} from "@iconbox/ui/components/select"
+import { Button } from "@iconbox/ui/components/button"
 import { ModeToggle } from '@/components/theme/theme-switch';
 import { UserNav } from '@/components/layout/user-nav'
 

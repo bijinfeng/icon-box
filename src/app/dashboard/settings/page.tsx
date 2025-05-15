@@ -1,5 +1,5 @@
 import { Main } from '@/components/layout/main'
-import { Separator } from '@/components/ui/separator'
+import { Separator } from '@iconbox/ui/components/separator'
 
 export default function SettingPage() {
   return (

@@ -23,7 +23,7 @@ import {
   SidebarFooter,
   SidebarHeader,
   SidebarRail,
-} from "@/components/ui/sidebar"
+} from "@iconbox/ui/components/sidebar"
 import type { MainSidebarItem } from '@/types'
 
 const navMain: MainSidebarItem[] = [

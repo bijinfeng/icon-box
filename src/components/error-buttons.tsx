@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/navigation'
 
-import { Button } from '@/components/ui/button'
+import { Button } from '@iconbox/ui/components/button'
 
 export const ErrorButtons = () => {
   const router = useRouter()

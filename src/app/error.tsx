@@ -1,6 +1,6 @@
 "use client"
 
-import { cn } from '@/lib/utils'
+import { cn } from '@iconbox/ui/lib/utils'
 import { ErrorButtons } from '@/components/error-buttons'
 
 interface GeneralErrorProps extends React.HTMLAttributes<HTMLDivElement> {

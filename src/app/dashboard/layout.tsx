@@ -1,13 +1,13 @@
 import type { FC, PropsWithChildren } from "react";
 import { Search } from "lucide-react"
 
-import { Input } from '@/components/ui/input'
-import { Separator } from "@/components/ui/separator"
-import { SidebarTrigger } from "@/components/ui/sidebar"
-import { Label } from "@/components/ui/label"
+import { Input } from '@iconbox/ui/components/input'
+import { Separator } from "@iconbox/ui/components/separator"
+import { SidebarTrigger } from "@iconbox/ui/components/sidebar"
+import { Label } from "@iconbox/ui/components/label"
 import { IconFilter } from '@/components/icon-filter'
 import { AppSidebar } from "@/components/app-sidebar"
-import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar"
+import { SidebarInset, SidebarProvider } from "@iconbox/ui/components/sidebar"
 
 const DashboardLayout: FC<PropsWithChildren> = ({ children }) => {
   return (

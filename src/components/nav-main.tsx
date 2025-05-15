@@ -8,7 +8,7 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-} from "@/components/ui/sidebar";
+} from "@iconbox/ui/components/sidebar";
 
 import type { MainSidebarItem } from "@/types";
 
