@@ -1,10 +1,14 @@
 import { signIn } from '@logto/next/server-actions';
 import { Button } from "@iconbox/ui/components/button"
 import { logtoConfig } from '@/config/logto';
+import { UserNav } from '@/components/layout/user-nav'
+import { useUserStore } from '@/store/user';
 
 import { MainNav } from "./main-nav"
 
 export function SiteHeader() {
+  const isSignedIn = useUserStore((s) => s.isSignedIn);
+
   const onSignIn = async () => {
     'use server';
 
@@ -21,9 +25,11 @@ export function SiteHeader() {
               {/* <CommandMenu /> */}
             </div>
             <nav className="flex items-center gap-0.5">
-              <Button variant="ghost" size="sm" onClick={onSignIn}>
-                登录
-              </Button>
+              {isSignedIn ? <UserNav /> : (
+                <Button variant="ghost" size="sm" onClick={onSignIn}>
+                  登录
+                </Button>
+              )}
             </nav>
           </div>
         </div>

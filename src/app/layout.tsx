@@ -3,6 +3,7 @@ import type { FC, PropsWithChildren } from "react";
 
 import { ThemeProvider } from "@/components/theme/theme-provider"
 import { fontMono, fontSans } from "@/lib/fonts"
+import AuthProvider from '@/layout/AuthProvider';
 
 import "@iconbox/ui/globals.css";
 
@@ -23,7 +24,9 @@ const RootLayout: FC<PropsWithChildren> = ({ children }) => {
           enableSystem
           disableTransitionOnChange
         >
-          {children}
+          <AuthProvider>
+            {children}
+          </AuthProvider>
         </ThemeProvider>
       </body>
     </html>
