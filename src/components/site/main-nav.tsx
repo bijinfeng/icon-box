@@ -2,9 +2,25 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
+import { cn } from "@iconbox/ui/lib/utils"
 
 import { siteConfig } from "@/config/site"
-import { cn } from "@iconbox/ui/lib/utils"
+import { NavLinkItem } from '@/types'
+
+const navs: NavLinkItem[] = [
+  {
+    title: "首页",
+    href: "/"
+  },
+  {
+    title: "资源管理",
+    href: "/dashboard",
+  },
+  {
+    title: "帮助",
+    href: '/docs'
+  }
+]
 
 export function MainNav() {
   const pathname = usePathname()
@@ -18,74 +34,20 @@ export function MainNav() {
         </span>
       </Link>
       <nav className="flex items-center gap-4 text-sm xl:gap-6">
-        <Link
-          href="/docs/installation"
-          className={cn(
-            "transition-colors hover:text-foreground/80",
-            pathname === "/docs/installation"
-              ? "text-foreground"
-              : "text-foreground/80"
-          )}
-        >
-          Docs
-        </Link>
-        <Link
-          href="/docs/components"
-          className={cn(
-            "transition-colors hover:text-foreground/80",
-            pathname?.startsWith("/docs/components") &&
-              !pathname?.startsWith("/docs/component/chart")
-              ? "text-foreground"
-              : "text-foreground/80"
-          )}
-        >
-          Components
-        </Link>
-        <Link
-          href="/blocks"
-          className={cn(
-            "transition-colors hover:text-foreground/80",
-            pathname?.startsWith("/blocks")
-              ? "text-foreground"
-              : "text-foreground/80"
-          )}
-        >
-          Blocks
-        </Link>
-        <Link
-          href="/charts"
-          className={cn(
-            "transition-colors hover:text-foreground/80",
-            pathname?.startsWith("/docs/component/chart") ||
-              pathname?.startsWith("/charts")
-              ? "text-foreground"
-              : "text-foreground/80"
-          )}
-        >
-          Charts
-        </Link>
-        <Link
-          href="/themes"
-          className={cn(
-            "transition-colors hover:text-foreground/80",
-            pathname?.startsWith("/themes")
-              ? "text-foreground"
-              : "text-foreground/80"
-          )}
-        >
-          Themes
-        </Link>
-        <Link
-          href="/colors"
-          className={cn(
-            "transition-colors hover:text-foreground/80",
-            pathname?.startsWith("/colors")
-              ? "text-foreground"
-              : "text-foreground/80"
-          )}
-        >
-          Colors
-        </Link>
+        {navs.map(nav => (
+          <Link
+            key={nav.href}
+            href={nav.href}
+            className={cn(
+              "transition-colors hover:text-foreground/80",
+              pathname === nav.href
+                ? "text-foreground"
+                : "text-foreground/80"
+            )}
+          >
+            {nav.title}
+          </Link>
+        ))}
       </nav>
     </div>
   )

@@ -2,8 +2,6 @@ import { signIn } from '@logto/next/server-actions';
 import { Button } from "@iconbox/ui/components/button"
 import { logtoConfig } from '@/config/logto';
 
-import { ModeToggle } from '@/components/theme/theme-switch'
-
 import { MainNav } from "./main-nav"
 
 export function SiteHeader() {
@@ -26,7 +24,6 @@ export function SiteHeader() {
               <Button variant="ghost" size="sm" onClick={onSignIn}>
                 登录
               </Button>
-              <ModeToggle variant="ghost" />
             </nav>
           </div>
         </div>
