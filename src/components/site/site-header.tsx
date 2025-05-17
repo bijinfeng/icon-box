@@ -1,17 +1,16 @@
-import { signIn } from '@logto/next/server-actions';
+import { signIn, getLogtoContext } from '@logto/next/server-actions';
 import { Button } from "@iconbox/ui/components/button"
 import { logtoConfig } from '@/config/logto';
 import { UserNav } from '@/components/layout/user-nav'
-import { useUserStore } from '@/store/user';
 
 import { MainNav } from "./main-nav"
 
-export function SiteHeader() {
-  const isSignedIn = useUserStore((s) => s.isSignedIn);
+export async function SiteHeader() {
+  
+  const { isAuthenticated } = await getLogtoContext(logtoConfig);
 
   const onSignIn = async () => {
     'use server';
-
     await signIn(logtoConfig);
   };
 
@@ -25,7 +24,7 @@ export function SiteHeader() {
               {/* <CommandMenu /> */}
             </div>
             <nav className="flex items-center gap-0.5">
-              {isSignedIn ? <UserNav /> : (
+              {isAuthenticated ? <UserNav /> : (
                 <Button variant="ghost" size="sm" onClick={onSignIn}>
                   登录
                 </Button>

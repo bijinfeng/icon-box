@@ -1,22 +1,12 @@
-'use client';
-
 import { type PropsWithChildren } from "react";
-import { createStoreUpdater } from 'zustand-utils';
 import { getLogtoContext } from "@logto/next/server-actions";
-
 import { logtoConfig } from "@/config/logto";
-
-import { useUserStore } from '@/store/user';
+import Provider from './Provider'
 
 const AuthProvider = async ({ children }: PropsWithChildren) => {
-  const { isAuthenticated, claims } = await getLogtoContext(logtoConfig);
+  const context = await getLogtoContext(logtoConfig);
 
-  const useStoreUpdater = createStoreUpdater(useUserStore);
-
-  useStoreUpdater("isSignedIn", isAuthenticated);
-  useStoreUpdater("user", claims);
-
-  return <>{children}</>;
+  return <Provider { ...context }>{children}</Provider>;
 };
 
 export default AuthProvider;
