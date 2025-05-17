@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import type { FC, PropsWithChildren } from "react";
+import { Analytics } from '@vercel/analytics/next';
 
 import { ThemeProvider } from "@/components/theme/theme-provider"
 import { fontMono, fontSans } from "@/lib/fonts"
@@ -28,6 +29,8 @@ const RootLayout: FC<PropsWithChildren> = ({ children }) => {
             {children}
           </AuthProvider>
         </ThemeProvider>
+        
+        <Analytics />
       </body>
     </html>
   );

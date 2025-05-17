@@ -19,6 +19,7 @@
     "@logto/next": "^4.2.3",
     "@tabler/icons-react": "^3.31.0",
     "@tanstack/react-table": "^8.21.3",
+    "@vercel/analytics": "^1.5.0",
     "lodash-es": "^4.17.21",
     "lucide-react": "^0.508.0",
     "next": "15.3.2",
