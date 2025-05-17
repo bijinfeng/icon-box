@@ -8,7 +8,7 @@ import { type UserState, initialState } from './initialState';
 
 export  type UserStore = UserState
 
-const createStore: StateCreator<UserStore, [['zustand/devtools', never]]> = (...parameters) => ({
+const createStore: StateCreator<UserStore, [['zustand/devtools', never]]> = () => ({
   ...initialState
 })
 
