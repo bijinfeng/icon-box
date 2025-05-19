@@ -6,7 +6,7 @@ import { cn } from '@iconbox/ui/lib/utils'
 import { badgeVariants } from '@iconbox/ui/components/badge'
 
 import { allDocs } from "contentlayer/generated"
-import { Mdx } from "@/components/mdx-components"
+import { Mdx } from "@/components/docs/mdx-components"
 import { DocsPager } from "@/components/pager"
 
 interface DocPageProps {

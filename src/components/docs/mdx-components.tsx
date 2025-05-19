@@ -19,6 +19,17 @@ import { AspectRatio } from '@iconbox/ui/components/aspect-ratio'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@iconbox/ui/components/tabs'
 import { cn } from "@iconbox/ui/lib/utils";
 
+import { Callout } from "@/components/callout"
+import { FrameworkDocs } from './framework-docs'
+import { NpmCommands } from "@/types/unist";
+import { CodeBlockWrapper } from './code-block-wrapper'
+import { ComponentSource } from './component-source'
+import { ComponentExample } from './component-example'
+import { ComponentPreview } from './component-preview'
+import { CopyButton } from './copy-button'
+import { CodeBlockCommand } from './code-block-command'
+import { Event } from "@/lib/events"
+ 
 interface MdxProps {
   code: string;
 }
@@ -33,11 +44,9 @@ const components: MDXComponents = {
   AccordionItem,
   AccordionTrigger,
   Alert,
-  AlertDescription,
   AlertTitle,
+  AlertDescription,
   Button,
-  Image,
-  AspectRatio,
   h1: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h1
       className={cn(
@@ -168,9 +177,81 @@ const components: MDXComponents = {
       {...props}
     />
   ),
-  Link: ({ className, ...props }: React.ComponentProps<typeof Link>) => (
-    <Link
-      className={cn("font-medium underline underline-offset-4", className)}
+  pre: ({
+    className,
+    __rawString__,
+    __npmCommand__,
+    __yarnCommand__,
+    __pnpmCommand__,
+    __bunCommand__,
+    __withMeta__,
+    __src__,
+    __event__,
+    ...props
+  }: React.HTMLAttributes<HTMLPreElement> & {
+    __rawString__?: string
+    __withMeta__?: boolean
+    __src__?: string
+    __event__?: Event["name"]
+  } & NpmCommands) => {
+    const isNpmCommand =
+      __npmCommand__ && __yarnCommand__ && __pnpmCommand__ && __bunCommand__
+
+    if (isNpmCommand) {
+      return (
+        <CodeBlockCommand
+          __npmCommand__={__npmCommand__}
+          __yarnCommand__={__yarnCommand__}
+          __pnpmCommand__={__pnpmCommand__}
+          __bunCommand__={__bunCommand__}
+        />
+      )
+    }
+
+    return (
+      <>
+        <pre
+          className={cn(
+            "mb-4 mt-6 max-h-[650px] overflow-x-auto rounded-xl bg-zinc-950 py-4 dark:bg-zinc-900",
+            className
+          )}
+          {...props}
+        />
+        {__rawString__ && (
+          <CopyButton
+            value={__rawString__}
+            src={__src__}
+            event={__event__}
+            className={cn("absolute right-4 top-4", __withMeta__ && "top-16")}
+          />
+        )}
+      </>
+    )
+  },
+  code: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
+    <code
+      className={cn(
+        "relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm",
+        className
+      )}
+      {...props}
+    />
+  ),
+  Image,
+  Callout,
+  ComponentPreview,
+  ComponentExample,
+  ComponentSource,
+  AspectRatio,
+  CodeBlockWrapper: ({ ...props }) => (
+    <CodeBlockWrapper className="rounded-md border" {...props} />
+  ),
+  Step: ({ className, ...props }: React.ComponentProps<"h3">) => (
+    <h3
+      className={cn(
+        "font-heading mt-8 scroll-m-20 text-xl font-semibold tracking-tight",
+        className
+      )}
       {...props}
     />
   ),
@@ -214,6 +295,27 @@ const components: MDXComponents = {
     <TabsContent
       className={cn(
         "relative [&_h3.font-heading]:text-base [&_h3.font-heading]:font-semibold",
+        className
+      )}
+      {...props}
+    />
+  ),
+  FrameworkDocs: ({
+    className,
+    ...props
+  }: React.ComponentProps<typeof FrameworkDocs>) => (
+    <FrameworkDocs className={cn(className)} {...props} />
+  ),
+  Link: ({ className, ...props }: React.ComponentProps<typeof Link>) => (
+    <Link
+      className={cn("font-medium underline underline-offset-4", className)}
+      {...props}
+    />
+  ),
+  LinkedCard: ({ className, ...props }: React.ComponentProps<typeof Link>) => (
+    <Link
+      className={cn(
+        "flex w-full flex-col items-center rounded-xl border bg-card p-6 text-card-foreground shadow transition-colors hover:bg-muted/50 sm:p-10",
         className
       )}
       {...props}

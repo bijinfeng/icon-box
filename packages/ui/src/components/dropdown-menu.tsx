@@ -238,6 +238,8 @@ function DropdownMenuSubContent({
   )
 }
 
+export type { DropdownMenuTriggerProps } from "@radix-ui/react-dropdown-menu"
+
 export {
   DropdownMenu,
   DropdownMenuPortal,
