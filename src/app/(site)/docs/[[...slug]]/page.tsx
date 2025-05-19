@@ -10,13 +10,11 @@ import { Mdx } from "@/components/mdx-components"
 import { DocsPager } from "@/components/pager"
 
 interface DocPageProps {
-  params: {
-    slug: string[]
-  }
+  params: Promise<{ slug: string[] }>
 }
 
 async function getDocFromParams({ params }: DocPageProps) {
-  const slug = params.slug?.join("/") || ""
+  const slug = (await params).slug?.join("/") || ""
   const doc = allDocs.find((doc) => doc.slugAsParams === slug)
 
   if (!doc) {
