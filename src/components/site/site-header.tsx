@@ -2,7 +2,6 @@ import { signIn, getLogtoContext } from '@logto/next/server-actions';
 import { Button } from "@iconbox/ui/components/button"
 import { logtoConfig } from '@/config/logto';
 import { UserNav } from '@/components/layout/user-nav'
-
 import { MainNav } from "./main-nav"
 
 export async function SiteHeader() {
