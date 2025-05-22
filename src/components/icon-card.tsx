@@ -25,8 +25,8 @@ export const IconCard = () => {
   return (
     <ContextMenu>
       <ContextMenuTrigger asChild>
-        <div className="bg-card text-card-foreground rounded-xl border shadow-sm @container/card flex flex-col items-center">
-          <div className=" h-20 flex items-center justify-center">
+        <div className="leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 flex flex-col items-center justify-between rounded-md border bg-transparent p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary">
+          <div className="h-16 flex items-center justify-center mb-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="32"
@@ -46,7 +46,7 @@ export const IconCard = () => {
             </svg>
           </div>
 
-          <div className="w-full text-xs leading-[18px] text-center px-4 pb-4">
+          <div className="w-full text-xs leading-[18px] text-center">
             <div className="text-sm font-medium">move-file</div>
             <div className="font-normal text-muted-foreground">移动文件</div>
           </div>
