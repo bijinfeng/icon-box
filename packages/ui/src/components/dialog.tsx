@@ -6,6 +6,8 @@ import { XIcon } from "lucide-react";
 
 import { cn } from "@iconbox/ui/lib/utils";
 
+export { type DialogProps } from "@radix-ui/react-dialog"
+
 function Dialog({
   ...props
 }: React.ComponentProps<typeof DialogPrimitive.Root>) {

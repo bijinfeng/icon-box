@@ -5,7 +5,6 @@ import {
   AvatarFallback,
   AvatarImage,
 } from '@iconbox/ui/components/avatar'
-import { Button } from '@iconbox/ui/components/button'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -24,12 +23,10 @@ export function UserNav() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" className="relative h-8 w-8 rounded-full">
-          <Avatar className="h-8 w-8">
-            <AvatarImage src={user?.picture ?? "/avatars/shadcn.jpg"} alt="@shadcn" />
-            <AvatarFallback>{user?.name}</AvatarFallback>
-          </Avatar>
-        </Button>
+        <Avatar className="size-7 cursor-pointer">
+          <AvatarImage src={user?.picture ?? "/avatars/shadcn.jpg"} alt="@shadcn" />
+          <AvatarFallback>{user?.name}</AvatarFallback>
+        </Avatar>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56" align="end" forceMount>
         <DropdownMenuLabel className="font-normal">

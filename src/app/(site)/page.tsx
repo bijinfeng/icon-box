@@ -25,6 +25,11 @@ export default function Page() {
           </Button>
         </PageActions>
       </PageHeader>
+
+      <div className="container-wrapper flex-1">
+        <div className="container py-6">
+        </div>
+      </div>
     </>
   )
 }

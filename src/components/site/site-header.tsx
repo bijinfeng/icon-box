@@ -3,6 +3,7 @@ import { Button } from "@iconbox/ui/components/button"
 import { logtoConfig } from '@/config/logto';
 import { UserNav } from '@/components/layout/user-nav'
 import { MainNav } from "./main-nav"
+import { CommandMenu } from "./command-menu"
 
 export async function SiteHeader() {
   
@@ -20,7 +21,7 @@ export async function SiteHeader() {
           <MainNav />
           <div className="ml-auto flex items-center gap-2 md:flex-1 md:justify-end">
             <div className="hidden w-full flex-1 md:flex md:w-auto md:flex-none">
-              {/* <CommandMenu /> */}
+              <CommandMenu />
             </div>
             <nav className="flex items-center gap-0.5">
               {isAuthenticated ? <UserNav /> : (
