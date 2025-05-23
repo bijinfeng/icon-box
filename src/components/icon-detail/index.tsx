@@ -13,6 +13,8 @@ import { Input } from "@iconbox/ui/components/input";
 import { TagTextarea } from "@iconbox/ui/components/tag-input";
 import { Label } from "@iconbox/ui/components/label";
 import { Separator } from "@iconbox/ui/components/separator";
+import { Actions } from "./actions";
+import { Styles } from "./styles";
 
 const formSchema = z.object({
   username: z.string().min(2, {
@@ -53,10 +55,9 @@ export const IconDetail = () => {
           />
         </div>
         <Separator />
-        <div className="px-3 py-4">
-          <Label className="mb-4">Style</Label>
-        </div>
+        <Styles />
         <Separator />
+        <Actions />
       </form>
     </Form>
   );
