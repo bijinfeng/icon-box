@@ -13,10 +13,10 @@ import {
   Folders
 } from "lucide-react"
 
-import { NavMain } from "@/components/nav-main"
-import { NavProjects } from "@/components/nav-projects"
+import { NavMain } from "@/components/dashboard/sidebar/nav-main"
+import { NavProjects } from "@/components/dashboard/sidebar/nav-projects"
 import { NavUser } from "@/components/nav-user"
-import { TeamSwitcher } from "@/components/team-switcher"
+import { TeamSwitcher } from "@/components/dashboard/sidebar/team-switcher"
 import {
   Sidebar,
   SidebarContent,

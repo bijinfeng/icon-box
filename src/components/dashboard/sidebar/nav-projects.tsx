@@ -1,10 +1,12 @@
 "use client"
 
+import Link from 'next/link'
 import {
   Folder,
   Forward,
   MoreHorizontal,
   Trash2,
+  Plus,
   type LucideIcon,
 } from "lucide-react"
 
@@ -22,6 +24,7 @@ import {
   SidebarMenuAction,
   SidebarMenuButton,
   SidebarMenuItem,
+  SidebarGroupAction,
   useSidebar,
 } from "@iconbox/ui/components/sidebar"
 
@@ -38,7 +41,13 @@ export function NavProjects({
 
   return (
     <SidebarGroup className="group-data-[collapsible=icon]:hidden">
-      <SidebarGroupLabel>Projects</SidebarGroupLabel>
+      <SidebarGroupLabel>我的项目</SidebarGroupLabel>
+      <Link href="/dashboard/projects/new">
+        <SidebarGroupAction title="新建项目">
+          <Plus /> <span className="sr-only">新建项目</span>
+        </SidebarGroupAction>
+      </Link>
+
       <SidebarMenu>
         {projects.map((item) => (
           <SidebarMenuItem key={item.name}>

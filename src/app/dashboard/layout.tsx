@@ -7,7 +7,7 @@ import { Label } from "@iconbox/ui/components/label"
 import { SidebarInset, SidebarProvider } from "@iconbox/ui/components/sidebar"
 
 import { IconFilter } from '@/components/icon-filter'
-import { AppSidebar } from "@/components/app-sidebar"
+import { AppSidebar } from "@/components/dashboard/sidebar/app-sidebar"
 import { AddIcon } from "@/components/add-icon"
 
 const DashboardLayout: FC<PropsWithChildren> = ({ children }) => {
