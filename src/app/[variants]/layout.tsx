@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import type { FC, PropsWithChildren } from "react";
 import { Analytics } from '@vercel/analytics/next';
+import { NuqsAdapter } from 'nuqs/adapters/next/app';
 
-import { ThemeProvider } from "@/components/theme/theme-provider"
 import { fontMono, fontSans } from "@/lib/fonts"
 import AuthProvider from '@/layout/AuthProvider';
+import GlobalProvider from '@/layout/GlobalProvider';
 
 import "@iconbox/ui/globals.css";
 
@@ -16,20 +17,14 @@ export const metadata: Metadata = {
 const RootLayout: FC<PropsWithChildren> = ({ children }) => {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body
-        className={`${fontSans.variable} ${fontMono.variable} antialiased`}
-      >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <AuthProvider>
-            {children}
-          </AuthProvider>
-        </ThemeProvider>
-        
+      <body className={`${fontSans.variable} ${fontMono.variable} antialiased`}>
+        <NuqsAdapter>
+          <GlobalProvider>
+            <AuthProvider>
+              {children}
+            </AuthProvider>
+          </GlobalProvider>
+        </NuqsAdapter>
         <Analytics />
       </body>
     </html>
