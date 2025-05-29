@@ -1,5 +1,5 @@
 import * as dotenv from 'dotenv';
-import type { Config } from 'drizzle-kit';
+import { defineConfig } from 'drizzle-kit';
 
 // Read the .env file if it exists, or a file specified by the
 
@@ -17,7 +17,7 @@ if (process.env.NODE_ENV === 'test') {
 if (!connectionString)
   throw new Error('`DATABASE_URL` or `DATABASE_TEST_URL` not found in environment');
 
-export default {
+export default defineConfig({
   dbCredentials: {
     url: connectionString,
   },
@@ -26,4 +26,4 @@ export default {
 
   schema: './src/database/schemas',
   strict: true,
-} satisfies Config;
+});
