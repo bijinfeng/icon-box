@@ -1,3 +1,5 @@
+"use client"
+
 import type { FC, PropsWithChildren } from "react";
 import { Search } from "lucide-react"
 
@@ -9,8 +11,13 @@ import { SidebarInset, SidebarProvider } from "@iconbox/ui/components/sidebar"
 import { IconFilter } from '@/components/icon-filter'
 import { AppSidebar } from "@/components/dashboard/sidebar/app-sidebar"
 import { AddIcon } from "@/components/add-icon"
+// import { trpcQuery } from "@/utils/trpc";
 
 const DashboardLayout: FC<PropsWithChildren> = ({ children }) => {
+  // const { data } = trpcQuery.hello.useQuery({ text: "xxx" })
+
+  // console.log(data)
+
   return (
     <SidebarProvider>
       <AppSidebar />
