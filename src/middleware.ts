@@ -17,6 +17,8 @@ export const config = {
     '/dashboard',
     '/dashboard(.*)',
 
+    '/login(.*)',
+    '/signup(.*)',
     '/callback(.*)',
   ],
 };
