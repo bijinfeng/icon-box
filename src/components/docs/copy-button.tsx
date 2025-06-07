@@ -4,7 +4,7 @@ import * as React from "react"
 import { CheckIcon, ClipboardIcon } from "lucide-react"
 import { NpmCommands } from "@/types/unist"
 
-import { Event, trackEvent } from "@/lib/events"
+import { Event, trackEvent } from "@/libs/events"
 import { cn } from "@iconbox/ui/lib/utils"
 import { Button, ButtonProps } from "@iconbox/ui/components/button"
 import {

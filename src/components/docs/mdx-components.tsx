@@ -28,7 +28,7 @@ import { ComponentExample } from './component-example'
 import { ComponentPreview } from './component-preview'
 import { CopyButton } from './copy-button'
 import { CodeBlockCommand } from './code-block-command'
-import { Event } from "@/lib/events"
+import { Event } from "@/libs/events"
  
 interface MdxProps {
   code: string;

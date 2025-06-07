@@ -3,7 +3,7 @@ import { type FC, type PropsWithChildren } from "react";
 import { Analytics } from '@vercel/analytics/next';
 import { NuqsAdapter } from 'nuqs/adapters/next/app';
 
-import { fontMono, fontSans } from "@/lib/fonts"
+import { fontMono, fontSans } from "@/libs/fonts"
 import AuthProvider from '@/layout/AuthProvider';
 import GlobalProvider from '@/layout/GlobalProvider';
 
