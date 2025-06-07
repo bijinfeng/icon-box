@@ -1,18 +1,13 @@
-import { signIn, getLogtoContext } from '@logto/next/server-actions';
-import { Button } from "@iconbox/ui/components/button"
-import { logtoConfig } from '@/config/logto';
-import { UserNav } from '@/components/layout/user-nav'
-import { MainNav } from "./main-nav"
-import { CommandMenu } from "./command-menu"
+import { buttonVariants } from "@iconbox/ui/components/button";
+import Link from "next/link";
+
+import { UserNav } from "@/components/layout/user-nav";
+
+import { MainNav } from "./main-nav";
+import { CommandMenu } from "./command-menu";
 
 export async function SiteHeader() {
-  
-  const { isAuthenticated } = await getLogtoContext(logtoConfig);
-
-  const onSignIn = async () => {
-    'use server';
-    await signIn(logtoConfig);
-  };
+  const isAuthenticated = false;
 
   return (
     <header className="border-grid sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -24,15 +19,17 @@ export async function SiteHeader() {
               <CommandMenu />
             </div>
             <nav className="flex items-center gap-0.5">
-              {isAuthenticated ? <UserNav /> : (
-                <Button variant="ghost" size="sm" onClick={onSignIn}>
+              {isAuthenticated ? (
+                <UserNav />
+              ) : (
+                <Link href="/login" className={buttonVariants({ variant: "ghost", size: "sm" })}>
                   登录
-                </Button>
+                </Link>
               )}
             </nav>
           </div>
         </div>
       </div>
     </header>
-  )
+  );
 }

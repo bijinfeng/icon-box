@@ -7,11 +7,12 @@ import { cn } from "@iconbox/ui/lib/utils";
 import { Button } from "@iconbox/ui/components/button";
 import { Card, CardContent } from "@iconbox/ui/components/card";
 import { Input } from "@iconbox/ui/components/input";
+import { Password } from "@iconbox/ui/components/password";
 import { Label } from "@iconbox/ui/components/label";
 
 import { OAuthButtons } from "@/components/oauth-buttons";
 
-export function LoginForm({ className, ...props }: React.ComponentProps<"div">) {
+export function SignUpForm({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div className={cn("flex flex-col gap-6", className)} {...props}>
       <Card className="overflow-hidden p-0">
@@ -19,8 +20,10 @@ export function LoginForm({ className, ...props }: React.ComponentProps<"div">) 
           <form className="p-6 md:p-8">
             <div className="flex flex-col gap-6">
               <div className="flex flex-col items-center text-center">
-                <h1 className="text-2xl font-bold">Welcome back</h1>
-                <p className="text-muted-foreground text-balance">Login to your Acme Inc account</p>
+                <h1 className="text-2xl font-bold">Create an account</h1>
+                <p className="text-muted-foreground text-balance">
+                  Let&apos;s get started. Fill in the details below to create your account.
+                </p>
               </div>
               <div className="grid gap-3">
                 <Label htmlFor="email">邮箱</Label>
@@ -29,14 +32,11 @@ export function LoginForm({ className, ...props }: React.ComponentProps<"div">) 
               <div className="grid gap-3">
                 <div className="flex items-center">
                   <Label htmlFor="password">密码</Label>
-                  <Link href="/forgot-password" className="ml-auto text-sm underline-offset-2 hover:underline">
-                    忘记密码?
-                  </Link>
                 </div>
-                <Input id="password" type="password" required />
+                <Password />
               </div>
               <Button type="submit" className="w-full">
-                登录
+                注册
               </Button>
               <div className="after:border-border relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t">
                 <span className="bg-card text-muted-foreground relative z-10 px-2">第三方账号</span>
@@ -45,9 +45,9 @@ export function LoginForm({ className, ...props }: React.ComponentProps<"div">) 
               <OAuthButtons />
 
               <div className="text-center text-sm">
-                Don&apos;t have an account?{" "}
-                <Link href="/sign-up" className="underline underline-offset-4">
-                  Sign up
+                Already have account?{" "}
+                <Link href="/login" className="underline underline-offset-4">
+                  Sign in
                 </Link>
               </div>
             </div>
