@@ -1,12 +1,21 @@
-import { type PropsWithChildren } from "react";
-import { getLogtoContext } from "@logto/next/server-actions";
-import { logtoConfig } from "@/config/logto";
-import Provider from './Provider'
+'use client';
 
-const AuthProvider = async ({ children }: PropsWithChildren) => {
-  const context = await getLogtoContext(logtoConfig);
+import { ClerkProvider } from '@clerk/nextjs';
+import { PropsWithChildren, memo } from 'react';
 
-  return <Provider { ...context }>{children}</Provider>;
-};
+import UserUpdater from './UserUpdater';
+
+const AuthProvider = memo(({ children }: PropsWithChildren) => {
+  return (
+    <ClerkProvider
+      // appearance={appearance}
+      // localization={localization}
+      signUpUrl='/signup' // Redirect sign-up to sign-in if disabled
+    >
+      {children}
+      <UserUpdater />
+    </ClerkProvider>
+  )
+});
 
 export default AuthProvider;
