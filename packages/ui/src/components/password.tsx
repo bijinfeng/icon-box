@@ -1,26 +1,44 @@
 import { useId, useMemo, useState } from "react";
 import { CheckIcon, EyeIcon, EyeOffIcon, XIcon } from "lucide-react";
 import { useControllableValue } from "ahooks";
+import { z } from "zod";
 
 import { Input } from "@iconbox/ui/components/input";
 import { cn } from "@iconbox/ui/lib/utils";
 
+// 校验文案
+const errorText = {
+  minLength: "至少 8 个字符",
+  minNumber: "至少 1 个数字",
+  minLowercase: "至少 1 个小写字母",
+  minUppercase: "至少 1 个大写字母",
+};
+
+const commonErrorText = "密码不符合要求";
+
+const requirements = [
+  { regex: /.{8,}/, text: errorText.minLength },
+  { regex: /[0-9]/, text: errorText.minNumber },
+  { regex: /[a-z]/, text: errorText.minLowercase },
+  { regex: /[A-Z]/, text: errorText.minUppercase },
+];
+
+export const passwordSchema = z
+  .string()
+  .min(8, commonErrorText)
+  .regex(/[0-9]/, commonErrorText)
+  .regex(/[a-z]/, commonErrorText)
+  .regex(/[A-Z]/, commonErrorText);
+
 export const Password = ({ className, ...props }: React.ComponentProps<"input">) => {
   const id = useId();
   const [isFocused, setIsFocused] = useState(false);
-  const [password, setPassword] = useControllableValue<string>(props);
+  const [password = "", setPassword] = useControllableValue<string>(props);
   const [isVisible, setIsVisible] = useState<boolean>(false);
 
   const toggleVisibility = () => setIsVisible((prevState) => !prevState);
 
   const checkStrength = (pass: string) => {
-    const requirements = [
-      { regex: /.{8,}/, text: "At least 8 characters" },
-      { regex: /[0-9]/, text: "At least 1 number" },
-      { regex: /[a-z]/, text: "At least 1 lowercase letter" },
-      { regex: /[A-Z]/, text: "At least 1 uppercase letter" },
-    ];
-
     return requirements.map((req) => ({
       met: req.regex.test(pass),
       text: req.text,
