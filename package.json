@@ -67,6 +67,7 @@
     "eslint-config-prettier": "^10.1.5",
     "husky": "^9.1.7",
     "lint-staged": "^16.0.0",
+    "next-rspack": "^15.3.4",
     "typescript": "^5"
   }
 }

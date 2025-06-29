@@ -1,4 +1,5 @@
-import { createContentlayerPlugin } from "next-contentlayer2"
+import { createContentlayerPlugin } from "next-contentlayer2";
+import withRspack from "next-rspack";
 
 import type { NextConfig } from "next";
 
@@ -9,6 +10,6 @@ const nextConfig: NextConfig = {
 
 const withContentlayer = createContentlayerPlugin({
   // Additional Contentlayer config options
-})
+});
 
-export default withContentlayer(nextConfig);
+export default withRspack(withContentlayer(nextConfig));

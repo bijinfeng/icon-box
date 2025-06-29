@@ -1,10 +1,6 @@
-"use client"
+"use client";
 
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from '@iconbox/ui/components/avatar'
+import { Avatar, AvatarFallback, AvatarImage } from "@iconbox/ui/components/avatar";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -14,27 +10,25 @@ import {
   DropdownMenuSeparator,
   DropdownMenuShortcut,
   DropdownMenuTrigger,
-} from '@iconbox/ui/components/dropdown-menu'
-import { useUserStore } from '@/store/user'
+} from "@iconbox/ui/components/dropdown-menu";
+import { useUserStore } from "@/store/user";
 
 export function UserNav() {
-  const user = useUserStore(state => state.user)
+  const user = useUserStore((state) => state.user);
 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Avatar className="size-7 cursor-pointer">
-          <AvatarImage src={user?.picture ?? "/avatars/shadcn.jpg"} alt="@shadcn" />
-          <AvatarFallback>{user?.name}</AvatarFallback>
+          <AvatarImage src={user?.avatar ?? "/avatars/shadcn.jpg"} alt="@shadcn" />
+          <AvatarFallback>{user?.username}</AvatarFallback>
         </Avatar>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56" align="end" forceMount>
         <DropdownMenuLabel className="font-normal">
           <div className="flex flex-col space-y-1">
             <p className="text-sm font-medium leading-none">shadcn</p>
-            <p className="text-xs leading-none text-muted-foreground">
-              m@example.com
-            </p>
+            <p className="text-xs leading-none text-muted-foreground">m@example.com</p>
           </div>
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
@@ -60,5 +54,5 @@ export function UserNav() {
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
-  )
+  );
 }
