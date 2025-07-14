@@ -30,6 +30,7 @@
     "@trpc/react-query": "^11.1.4",
     "@trpc/server": "^11.1.4",
     "@vercel/analytics": "^1.5.0",
+    "bknd": "^0.15.0",
     "contentlayer2": "^0.5.8",
     "debug": "^4.4.1",
     "drizzle-orm": "^0.43.1",
