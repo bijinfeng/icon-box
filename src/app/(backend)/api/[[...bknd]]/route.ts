@@ -1,14 +1,13 @@
-import { config } from "@/libs/bknd";
 import { serve } from "bknd/adapter/nextjs";
+import { config } from "@/libs/bknd";
 
-// optionally, you can set the runtime to edge for better performance
-export const runtime = "edge";
+// since we're using the local media adapter in this example,
+// we can't use the edge runtime.
+// export const runtime = "edge";
 
 const handler = serve({
   ...config,
   cleanRequest: {
-    // depending on what name you used for the catch-all route,
-    // you need to change this to clean it from the request.
     searchParams: ["bknd"],
   },
 });

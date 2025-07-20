@@ -13,3 +13,5 @@ const withContentlayer = createContentlayerPlugin({
 });
 
 export default withRspack(withContentlayer(nextConfig));
+
+// export default withContentlayer(nextConfig);
