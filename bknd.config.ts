@@ -1,7 +1,8 @@
 import type { NextjsBkndConfig } from "bknd/adapter/nextjs";
-import { boolean, em, entity, text } from "bknd/data";
+import { boolean, Connection, em, entity, text } from "bknd/data";
 import { registerLocalMediaAdapter } from "bknd/adapter/node";
 import { secureRandomString } from "bknd/utils";
+import { postgresJs } from "@bknd/postgres";
 
 // The local media adapter works well in development, and server based
 // deployments. However, on vercel or any other serverless deployments,
@@ -20,18 +21,17 @@ const schema = em({
   }),
 });
 
-// register your schema to get automatic type completion
-type Database = (typeof schema)["DB"];
-declare module "bknd/core" {
-  interface DB extends Database {}
-}
-
 export default {
-  app: (env) => ({
-    connection: {
-      url: env.DB_URL ?? "file:data.db",
-    },
-  }),
+  app: (env) => {
+    let connection: Connection | { url: string }  = { url: "file:data.db" };
+    const databaseUrl = env.DATABASE_URL;
+
+    if (databaseUrl) {
+      connection = postgresJs(databaseUrl)
+    }
+
+    return { connection };
+  },
   // an initial config is only applied if the database is empty
   initialConfig: {
     data: schema.toJSON(),
