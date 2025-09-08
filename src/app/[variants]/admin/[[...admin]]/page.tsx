@@ -1,5 +1,5 @@
 import { AdminComponent } from "./Admin";
-import { getApi } from "@/libs/bknd";
+import { getApi } from "@/bknd";
 import "bknd/dist/styles.css";
 
 export default async function AdminPage() {

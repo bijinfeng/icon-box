@@ -3,12 +3,11 @@
 import Link from "next/link";
 import Image from "next/image";
 import { z } from "zod";
-
 import { cn } from "@iconbox/ui/lib/utils";
 import { Button } from "@iconbox/ui/components/button";
 import { Card, CardContent } from "@iconbox/ui/components/card";
 import { Input } from "@iconbox/ui/components/input";
-import { Password, passwordSchema } from "@iconbox/ui/components/password";
+import { Label } from "@iconbox/ui/components/label";
 import {
   Form,
   FormField,
@@ -20,15 +19,19 @@ import {
   zodResolver,
 } from "@iconbox/ui/components/form";
 
-import { OAuthButtons } from "@/components/oauth-buttons";
+import { loginAction } from "./action";
 
 const formSchema = z.object({
   email: z.string().email("邮箱格式不正确"),
-  password: passwordSchema,
+  password: z.string().min(8, "密码长度至少为8位"),
 });
 
-export function SignUpForm({ className, ...props }: React.ComponentProps<"div">) {
-  const form = useForm<z.infer<typeof formSchema>>({
+export type LoginFormValues = z.infer<typeof formSchema>;
+
+export type LoginFormProps = Omit<React.ComponentProps<"div">, "onSubmit">;
+
+export function LoginForm({ className, children, ...props }: LoginFormProps) {
+  const form = useForm<LoginFormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       email: "",
@@ -36,24 +39,16 @@ export function SignUpForm({ className, ...props }: React.ComponentProps<"div">)
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    console.log(values);
-  }
-
   return (
     <div className={cn("flex flex-col gap-6", className)} {...props}>
       <Card className="overflow-hidden p-0">
         <CardContent className="grid p-0 md:grid-cols-2">
           <Form {...form}>
-            <form className="p-6 md:p-8" onSubmit={form.handleSubmit(onSubmit)}>
+            <form className="p-6 md:p-8" onSubmit={form.handleSubmit(loginAction)}>
               <div className="flex flex-col gap-6">
                 <div className="flex flex-col items-center text-center">
-                  <h1 className="text-2xl font-bold">Create an account</h1>
-                  <p className="text-muted-foreground text-balance">
-                    Let&apos;s get started. Fill in the details below to create your account.
-                  </p>
+                  <h1 className="text-2xl font-bold">Welcome back</h1>
+                  <p className="text-muted-foreground text-balance">Login to your Acme Inc account</p>
                 </div>
                 <FormField
                   control={form.control}
@@ -73,30 +68,35 @@ export function SignUpForm({ className, ...props }: React.ComponentProps<"div">)
                   name="password"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>密码</FormLabel>
+                      <div className="flex items-center">
+                        <Label htmlFor="password">密码</Label>
+                        <Link href="/forgot-password" className="ml-auto text-sm underline-offset-2 hover:underline">
+                          忘记密码?
+                        </Link>
+                      </div>
                       <FormControl>
-                        <Password {...field} />
+                        <Input type="password" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
                   )}
                 />
+
                 <Button type="submit" className="w-full">
-                  注册
+                  登录
                 </Button>
 
-                <OAuthButtons />
+                {children}
 
                 <div className="text-center text-sm">
-                  Already have account?{" "}
-                  <Link href="/login" className="underline underline-offset-4">
-                    Sign in
+                  Don&apos;t have an account?{" "}
+                  <Link href="/sign-up" className="underline underline-offset-4">
+                    Sign up
                   </Link>
                 </div>
               </div>
             </form>
           </Form>
-
           <div className="bg-muted relative hidden md:block">
             <Image
               src="/placeholder.svg"

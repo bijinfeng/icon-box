@@ -1,9 +1,9 @@
 import type { NextjsBkndConfig } from "bknd/adapter/nextjs";
-import { boolean, em, entity, text } from "bknd/data";
+import { boolean, em, entity, text } from "bknd";
 import { registerLocalMediaAdapter } from "bknd/adapter/node";
 import { secureRandomString } from "bknd/utils";
-import { postgresJs, createCustomPostgresConnection } from "@bknd/postgres";
-import { NeonDialect } from "kysely-neon";
+// import { postgresJs, createCustomPostgresConnection } from "@bknd/postgres";
+// import { NeonDialect } from "kysely-neon";
 
 // The local media adapter works well in development, and server based
 // deployments. However, on vercel or any other serverless deployments,
@@ -24,19 +24,19 @@ const schema = em({
 
 export default {
   app: (env) => {
-    const databaseUrl = env.DATABASE_URL;
-    const databaseDriver = env.DATABASE_DRIVER;
+    // const databaseUrl = env.DATABASE_URL;
+    // const databaseDriver = env.DATABASE_DRIVER;
 
-    if (!databaseUrl) {
-      return { connection: { url: "file:data.db" } };
-    }
+    // if (!databaseUrl) {
+    return { connection: { url: "file:data.db" } };
+    // }
 
-    if (databaseDriver === "neon") {
-      const neon = createCustomPostgresConnection(NeonDialect);
-      return { connection: neon({ connectionString: databaseUrl }) };
-    }
+    // if (databaseDriver === "neon") {
+    //   const neon = createCustomPostgresConnection(NeonDialect);
+    //   return { connection: neon({ connectionString: databaseUrl }) };
+    // }
 
-    return { connection: postgresJs(databaseUrl) };
+    // return { connection: postgresJs(databaseUrl) };
   },
   // an initial config is only applied if the database is empty
   initialConfig: {

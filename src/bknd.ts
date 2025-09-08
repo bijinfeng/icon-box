@@ -1,8 +1,9 @@
 import { getApp as getBkndApp } from "bknd/adapter/nextjs";
+import type { Api } from "bknd/client";
 import { headers } from "next/headers";
-import config from "../../bknd.config";
+import config from "../bknd.config";
 
-export { config };
+export { config, Api };
 
 export async function getApp() {
   return await getBkndApp(config, process.env);

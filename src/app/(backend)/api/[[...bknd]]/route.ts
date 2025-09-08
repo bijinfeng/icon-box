@@ -1,5 +1,5 @@
 import { serve } from "bknd/adapter/nextjs";
-import { config } from "@/libs/bknd";
+import { config } from "@/bknd";
 
 // since we're using the local media adapter in this example,
 // we can't use the edge runtime.
