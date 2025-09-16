@@ -1,5 +1,5 @@
 import { useId, useState } from "react";
-import { Tag, TagInput } from "emblor";
+import { Tag, TagInput } from "emblor-maintained";
 
 const tags = [
   {

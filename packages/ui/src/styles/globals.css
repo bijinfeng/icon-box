@@ -1,7 +1,7 @@
 @import "tailwindcss";
 @source "../../../../src/**/*.{ts,tsx}";
 @source "../**/*.{ts,tsx}";
-@source "../../../node_modules/emblor"
+@source "../../../node_modules/emblor-maintained"
 
 @import "tw-animate-css";
 

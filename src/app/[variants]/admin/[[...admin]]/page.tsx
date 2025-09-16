@@ -1,6 +1,7 @@
-import { AdminComponent } from "./Admin";
 import { getApi } from "@/bknd";
 import "bknd/dist/styles.css";
+
+import { AdminComponent } from "./Admin";
 
 export default async function AdminPage() {
   // make sure to verify auth using headers
@@ -12,7 +13,6 @@ export default async function AdminPage() {
       config={{
         basepath: "/admin",
         logo_return_path: "/../",
-        theme: "system",
       }}
     />
   );

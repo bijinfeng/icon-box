@@ -1,5 +1,7 @@
 import { type LucideIcon } from "lucide-react";
 
+export type AppTheme = "dark" | "light" | "system";
+
 export interface MainSidebarItem {
   title: string;
   url: string;
@@ -8,22 +10,22 @@ export interface MainSidebarItem {
 }
 
 export interface NavItem {
-  title: string
-  href?: string
-  disabled?: boolean
-  external?: boolean
-  icon?: LucideIcon
-  label?: string
+  title: string;
+  href?: string;
+  disabled?: boolean;
+  external?: boolean;
+  icon?: LucideIcon;
+  label?: string;
 }
 
 export interface NavLinkItem extends NavItem {
-  href: string
+  href: string;
 }
 
 export interface NavItemWithChildren extends NavItem {
-  items: NavItemWithChildren[]
+  items: NavItemWithChildren[];
 }
 
-export type MainNavItem = NavItem
+export type MainNavItem = NavItem;
 
-export type SidebarNavItem = NavItemWithChildren 
+export type SidebarNavItem = NavItemWithChildren;
